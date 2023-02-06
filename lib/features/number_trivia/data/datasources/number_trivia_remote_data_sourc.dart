@@ -15,13 +15,13 @@ class NumberTriviaRemoteDataSourceImpl implements NumberTriviaRemoteDataSource {
   NumberTriviaRemoteDataSourceImpl({required this.client});
   @override
   Future<NumberTriviaModel> getConcreteNumberTrivia(int number) =>
-      getTriviaFromUrl('http://numbersapi.com/$number');
+      _getTriviaFromUrl('http://numbersapi.com/$number');
 
   @override
   Future<NumberTriviaModel> getRandomNumberTrivia() =>
-      getTriviaFromUrl('http://numbersapi.com/random');
+      _getTriviaFromUrl('http://numbersapi.com/random');
 
-  Future<NumberTriviaModel> getTriviaFromUrl(String url) async {
+  Future<NumberTriviaModel> _getTriviaFromUrl(url) async {
     final response = await client.get(Uri.parse(url), headers: {
       'Content-Type': 'application/json',
     });
