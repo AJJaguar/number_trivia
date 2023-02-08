@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-void main() {
+import 'di/locator.dart';
+
+void main() async {
+ await init();
   runApp(const MyApp());
 }
 
