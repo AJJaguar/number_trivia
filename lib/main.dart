@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:number_trivia/features/number_trivia/presentation/pages/input_page.dart';
 
 import 'di/locator.dart';
 
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const InputPage()
     );
   }
 }
