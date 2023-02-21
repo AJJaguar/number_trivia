@@ -12,6 +12,7 @@ class GetConcreteNumberTrivia extends UseCase<NumberTrivia, Params> {
 
   @override
   Future<Either<Failure, NumberTrivia>?> call(Params params) async {
+    print('concrete');
     return await repository.getConcreteNumberTrivia(params.number);
   }
 }
@@ -23,5 +24,5 @@ class Params extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [number];
 }

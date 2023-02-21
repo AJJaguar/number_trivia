@@ -52,7 +52,7 @@ void main() {
 
     test(
         'should call the InputConverter to validate and convert the string to an unsigned integer',
-        () async {
+        () async* {
       // arrange
       when(mockInputConverter.stringToUnsignedInteger(any))
           .thenReturn(Right(tNumberParsed));

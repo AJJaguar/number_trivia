@@ -15,7 +15,7 @@ dependencies:
   dartz: ^0.10.1
   get_it: ^7.2.0
   internet_connection_checker: ^1.0.0+1
-  flutter_bloc: ^8.1.1
+  flutter_bloc: ^8.1.2
   equatable: ^2.0.5
   shared_preferences: ^2.0.17
   http: ^0.13.5
@@ -29,6 +29,8 @@ dev_dependencies:
   mockito: ^5.3.2
   flutter_lints: ^2.0.0
   build_runner:
+  very_good_analysis: ^4.0.0+1
+
 
 
 
