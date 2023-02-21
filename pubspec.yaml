@@ -19,6 +19,9 @@ dependencies:
   equatable: ^2.0.5
   shared_preferences: ^2.0.17
   http: ^0.13.5
+  hive:
+  hive_flutter:
+
 
 
   cupertino_icons: ^1.0.2
@@ -30,7 +33,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner:
   very_good_analysis: ^4.0.0+1
-
+  hive_generator: 
 
 
 
