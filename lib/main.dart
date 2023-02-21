@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:number_trivia/features/number_trivia/presentation/pages/input_page.dart';
-
+import 'package:hive_flutter/hive_flutter.dart';
 import 'di/locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+
+  var box = await Hive.openBox('myBox');
 
   await init();
   runApp(const MyApp());

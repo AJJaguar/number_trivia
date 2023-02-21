@@ -13,7 +13,7 @@ abstract class NumberTriviaLocalDataSource {
 }
 
 class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
-  final SharedPreferences sharedPreferences;
+  final Hive hive;
 
   NumberTriviaLocalDataSourceImpl({required this.sharedPreferences});
   @override
