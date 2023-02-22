@@ -41,8 +41,8 @@ FutureOr<void> init() async {
           ));
 
 // data sources
-  sl.registerLazySingleton<NumberTriviaLocalDataSource>(() =>
-      NumberTriviaLocalDataSourceImpl( hive: sl()));
+  sl.registerLazySingleton<NumberTriviaLocalDataSource>(
+      () => NumberTriviaLocalDataSourceImpl(hive: sl()));
 
   sl.registerLazySingleton<NumberTriviaRemoteDataSource>(
       () => NumberTriviaRemoteDataSourceImpl(client: sl()));
@@ -52,11 +52,14 @@ FutureOr<void> init() async {
   sl.registerLazySingleton(() => InputConverter());
 
 // External
-  final sharedPreferences = await SharedPreferences.getInstance();
-  sl.registerLazySingleton(
-    () => sharedPreferences,
-  );
-  sl.registerSingletonAsync(() => HiveInterface);
+  // final sharedPreferences = await SharedPreferences.getInstance();
+  // final hiveInterface = HiveInterface();
+  // sl.registerLazySingleton(
+  //   () => sharedPreferences,
+  // );
+  sl.registerLazySingleton(() => HiveInterface);
+  // sl.registerLazySingleton<HiveInterface>(() => HiveInterface as HiveInterface);
+
   sl.registerLazySingleton(() => Client());
   sl.registerLazySingleton(() => InternetConnectionChecker());
 }
