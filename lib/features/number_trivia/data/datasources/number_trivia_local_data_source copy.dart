@@ -16,13 +16,16 @@ abstract class NumberTriviaLocalDataSource {
 final myBox = Hive.box('myBox');
 
 class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
-  final Box box;
-  NumberTriviaLocalDataSourceImpl({required this.box});
+  final HiveInterface hive;
+
+  NumberTriviaLocalDataSourceImpl({required this.hive});
   @override
-  Future<NumberTriviaModel> getLastNumberTrivia() {
+  Future<NumberTriviaModel> getLastNumberTrivia() async {
+    // var myBox = await Hive.openBox('myBox');
+
     final jsonString = myBox.get(CACHED_NUMBER_TRIVIA);
     if (jsonString != null) {
-      return Future.value(NumberTriviaModel.fromJson(json.decode(jsonString)));
+    return Future.value(NumberTriviaModel.fromJson(json.decode(jsonString)));
     } else {
       throw CacheException();
       // return CacheException()
@@ -30,7 +33,9 @@ class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
   }
 
   @override
-  Future<void> cacheNumberTrivia(NumberTriviaModel triviaToCache) {
+  Future<void> cacheNumberTrivia(NumberTriviaModel triviaToCache) async {
+    // var myBox = await Hive.openBox('myBox');
+
     return myBox.put(
       CACHED_NUMBER_TRIVIA,
       json.encode(

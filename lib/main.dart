@@ -7,7 +7,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
-  // var box = await Hive.openBox('myBox');
+  var box = await Hive.openBox('myBox');
 
 
   await init();
