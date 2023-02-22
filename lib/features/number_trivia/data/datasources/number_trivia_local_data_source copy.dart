@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:number_trivia/core/error/exceptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,13 +13,14 @@ abstract class NumberTriviaLocalDataSource {
   Future<void> cacheNumberTrivia(NumberTriviaModel triviaToCache);
 }
 
-class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
-  final Hive hive;
+final myBox = Hive.box('myBox');
 
-  NumberTriviaLocalDataSourceImpl({required this.sharedPreferences});
+class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
+  final HiveInterface hive;
+  NumberTriviaLocalDataSourceImpl({required this.hive});
   @override
   Future<NumberTriviaModel> getLastNumberTrivia() {
-    final jsonString = sharedPreferences.getString(CACHED_NUMBER_TRIVIA);
+    final jsonString = myBox.get(CACHED_NUMBER_TRIVIA);
     if (jsonString != null) {
       return Future.value(NumberTriviaModel.fromJson(json.decode(jsonString)));
     } else {
@@ -29,7 +31,7 @@ class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
 
   @override
   Future<void> cacheNumberTrivia(NumberTriviaModel triviaToCache) {
-    return sharedPreferences.setString(
+    return myBox.put(
       CACHED_NUMBER_TRIVIA,
       json.encode(
         triviaToCache.toJson(),

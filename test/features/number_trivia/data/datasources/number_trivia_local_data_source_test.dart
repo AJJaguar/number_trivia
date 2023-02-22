@@ -29,6 +29,7 @@ void main() {
       // arrange
       when(mockSharedPreferences.getString(any))
           .thenReturn(fixture('trivia_cached.json'));
+        
 
       // act
       final result = await dataSource.getLastNumberTrivia();
