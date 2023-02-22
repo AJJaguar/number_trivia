@@ -19,27 +19,23 @@ void main() {
   setUp(() {
     mockHiveInterface = MockHiveInterface();
     mockBox = MockBox();
-    dataSource = NumberTriviaLocalDataSourceImpl(hive: mockHiveInterface);
+    dataSource = NumberTriviaLocalDataSourceImpl(box: mockBox);
   });
 
   group('getLastNumberTrivia', () {
-
     final tNumberTriviaModel =
         NumberTriviaModel.fromJson(json.decode(fixture('trivia_cached.json')));
 
-  test('should return last cached numbertrivia if it is cached', () {
-    // arrange
-    when(mockHiveInterface.)
+    test('should return last cached numbertrivia if it is cached', () async {
+      // arrange
+      when(mockBox.get(any)).thenReturn(fixture('trivia_cached.json'));
 
+      // act
+      final result = await dataSource.getLastNumberTrivia();
 
-    // act
-
-
-    // assert
-
-
-  })
-
-
+      // assert
+      verify(mockBox.get(CACHED_NUMBER_TRIVIA));
+      expect(result, equals(tNumberTriviaModel));
+    });
   });
 }

@@ -16,8 +16,8 @@ abstract class NumberTriviaLocalDataSource {
 final myBox = Hive.box('myBox');
 
 class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
-  final HiveInterface hive;
-  NumberTriviaLocalDataSourceImpl({required this.hive});
+  final Box box;
+  NumberTriviaLocalDataSourceImpl({required this.box});
   @override
   Future<NumberTriviaModel> getLastNumberTrivia() {
     final jsonString = myBox.get(CACHED_NUMBER_TRIVIA);
